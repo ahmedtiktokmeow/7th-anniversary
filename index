@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>7th Anniversary Gift 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #fff1f2, #fde2e4, #fbcfe8);
+      color: #7f1d1d;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .screen {
+      min-height: 100vh;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      animation: fadeIn 0.8s ease;
+    }
+
+    .screen.active {
+      display: flex;
+    }
+
+    h1, h2 {
+      font-family: "Georgia", serif;
+    }
+
+    button {
+      background: linear-gradient(to right, #ec4899, #f43f5e);
+      border: none;
+      color: white;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-size: 18px;
+      cursor: pointer;
+      margin-top: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      transition: transform 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .chocolate-box {
+      position: relative;
+      width: 300px;
+      height: 260px;
+      background: radial-gradient(circle at top, #e11d48, #9f1239);
+      clip-path: path("M150,250 C100,200 20,180 20,120 C20,80 40,60 70,60 C100,60 130,80 150,100 C170,80 200,60 230,60 C260,60 280,80 280,120 C280,180 200,200 150,250 Z");
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 10px;
+      padding: 60px 30px;
+    }
+
+    .choco {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #8b4513;
+      cursor: pointer;
+    }
+
+    .special {
+      background: #ef4444;
+      box-shadow: 0 0 10px #f87171;
+      animation: pulse 1.2s infinite;
+    }
+
+    .letter {
+      background: #fff7ed;
+      border: 4px solid #fde68a;
+      border-radius: 16px;
+      padding: 30px;
+      max-width: 600px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      color: #78350f;
+    }
+
+    .music-card {
+      background: rgba(255,255,255,0.9);
+      border-radius: 24px;
+      padding: 30px;
+      width: 300px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+
+    video {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- INTRO -->
+  <div class="screen active" id="intro">
+    <h1>7th Anniversary Gift<br>For My Bobo Lamoora 💖</h1>
+    <p>Click to see your surprise</p>
+    <button onclick="goTo('chocolates')">Open Gift</button>
+  </div>
+
+  <!-- CHOCOLATES -->
+  <div class="screen" id="chocolates">
+    <h2>Find the Special Chocolate 🍫</h2>
+    <div class="chocolate-box">
+      <div class="choco"></div>
+      <div class="choco"></div>
+      <div class="choco"></div>
+      <div class="choco"></div>
+
+      <div class="choco"></div>
+      <div class="choco special" onclick="foundChocolate()"></div>
+      <div class="choco"></div>
+      <div class="choco"></div>
+
+      <div class="choco"></div>
+      <div class="choco"></div>
+      <div class="choco"></div>
+      <div class="choco"></div>
+    </div>
+    <p style="margin-top:20px; font-style:italic;">Hint: Look for something different...</p>
+  </div>
+
+  <!-- LETTER -->
+  <div class="screen" id="letter">
+    <div class="letter">
+      <h2>My Dearest Lamoorti</h2>
+      <p>Every moment that I spend with you feels like a beautiful dream I never want to end.</p>
+      <p>You've brought the spark and light into my world that I never knew existed.</p>
+      <p>This gift is just a small appreciation for the love I have for you.</p>
+      <p style="text-align:right; font-style:italic;">Forever yours,<br>With all my heart ❤️</p>
+      <button onclick="goTo('music')">Continue to Music</button>
+    </div>
+  </div>
+
+  <!-- MUSIC -->
+  <div class="screen" id="music">
+    <h2>Our Song 🎵</h2>
+    <div class="music-card">
+      <p><strong>Perfect Melody</strong></p>
+      <p>Our Special Song</p>
+
+      <audio id="song" src="song0.mp3"></audio>
+
+      <button onclick="toggleMusic()">Play / Pause</button>
+    </div>
+    <button onclick="goTo('video')">Watch Our Memory</button>
+  </div>
+
+  <!-- VIDEO -->
+  <div class="screen" id="video">
+    <h2>A Memory to Cherish 🎥</h2>
+    <video controls>
+      <source src="ourmemory.mp4" type="video/mp4">
+      Your browser does not support the video.
+    </video>
+    <button onclick="goTo('finale')">Final Surprise</button>
+  </div>
+
+  <!-- FINALE -->
+  <div class="screen" id="finale">
+    <h1>I Love You 💕</h1>
+    <p>More than words can say</p>
+    <button onclick="goTo('intro')">Experience Again</button>
+  </div>
+
+  <script>
+    function goTo(id) {
+      document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+    }
+
+    function foundChocolate() {
+      setTimeout(() => {
+        goTo("letter");
+      }, 600);
+    }
+
+    const song = document.getElementById("song");
+    song.currentTime = 66; // 1:06 start
+
+    function toggleMusic() {
+      if (song.paused) {
+        song.play();
+      } else {
+        song.pause();
+      }
+    }
+  </script>
+
+</body>
+</html>
